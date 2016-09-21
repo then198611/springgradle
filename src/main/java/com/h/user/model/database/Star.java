@@ -1,4 +1,4 @@
-package com.h.user.model;
+package com.h.user.model.database;
 
 import javax.persistence.*;
 

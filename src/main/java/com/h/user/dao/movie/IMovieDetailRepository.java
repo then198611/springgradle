@@ -1,6 +1,6 @@
 package com.h.user.dao.movie;
 
-import com.h.user.model.MovieDetail;
+import com.h.user.model.database.MovieDetail;
 import org.springframework.data.repository.CrudRepository;
 
 /**

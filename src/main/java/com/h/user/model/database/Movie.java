@@ -1,4 +1,6 @@
-package com.h.user.model;
+package com.h.user.model.database;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 import javax.persistence.*;
 import java.util.List;
@@ -6,14 +8,26 @@ import java.util.List;
 /**
  * Created by huangshuaihui on 16/9/2.
  */
+
+
 @Entity
 @Table(name = "movie", schema = "sampledb")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Movie {
     private int id;
     private String title;
     private Integer year;
+    private int detail_id;
     private MovieDetail detail;
     private List<Star> star;
+
+    public Movie() {
+    }
+
+    public Movie(String title, Integer year) {
+        this.title = title;
+        this.year = year;
+    }
 
     @Id
     @Column(name = "id")
@@ -45,8 +59,18 @@ public class Movie {
         this.year = year;
     }
 
+//    @Basic
+//    @Column(name = "detail_id")
+//    public int getDetail_id() {
+//        return detail_id;
+//    }
+//
+//    public void setDetail_id(int detail_id) {
+//        this.detail_id = detail_id;
+//    }
 
-    @OneToOne(cascade = CascadeType.ALL,mappedBy = "movie")
+    @OneToOne
+    @JoinColumn(name = "detail_id")
     public MovieDetail getDetail() {
         return detail;
     }
@@ -69,27 +93,4 @@ public class Movie {
         this.star = star;
     }
 
-    //    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//
-//        Movie that = (Movie) o;
-//
-//        if (id != that.id) return false;
-//        if (title != null ? !title.equals(that.title) : that.title != null) return false;
-//        if (year != null ? !year.equals(that.year) : that.year != null) return false;
-////        if (detailId != null ? !detailId.equals(that.detailId) : that.detailId != null) return false;
-//
-//        return true;
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        int result = id;
-//        result = 31 * result + (title != null ? title.hashCode() : 0);
-//        result = 31 * result + (year != null ? year.hashCode() : 0);
-////        result = 31 * result + (detailId != null ? detailId.hashCode() : 0);
-//        return result;
-//    }
 }

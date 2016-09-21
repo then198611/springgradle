@@ -1,7 +1,7 @@
 package com.h.user.controller;
 
 import com.h.user.dao.movie.IMovieDetailRepository;
-import com.h.user.model.MovieDetail;
+import com.h.user.model.database.MovieDetail;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

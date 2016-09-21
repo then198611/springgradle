@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: springgradle
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/sampledb
@@ -8,3 +10,11 @@ spring:
       max-wait: 5
   jpa:
     show-sql: true
+logging:
+  level:
+    root: warn
+    org:
+      springframework:
+        web: debug
+      hibernate: error
+  file: ${spring.application.name}.log
